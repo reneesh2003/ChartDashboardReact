@@ -1,0 +1,72 @@
+$white: #ffffff;
+$grey: #c4c4c4;
+
+/* Dashboard styles */
+.dashboard {
+  background-color: $white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.dashboard-title {
+  padding: 1%;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: $grey;
+  margin-bottom: 5%;
+}
+
+/* Custom dropdown styles */
+.custom-dropdown {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+
+.dropdown-header {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: $white; /* Header background color */
+}
+
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: block; /* Initially hidden */
+}
+
+.dropdown-options div {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: $white; /* Dropdown option background color */
+}
+
+.dropdown-options div:hover {
+  background-color: #f0f0f0; /* Dropdown option hover background color */
+}
+
+.arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  border-color: #555 transparent transparent transparent;
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: translateY(-50%) rotate(180deg);
+}

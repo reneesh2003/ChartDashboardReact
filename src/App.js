@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import EditPage from './components/EditPage';
+import { useState,useEffect } from 'react';
+import MobileDashboard from './components/MobileDashboard';
+import { connect } from 'react-redux';
+import { setChartType,setChartData, fetchData } from './redux/actions';
 
-function App() {
+function App({ chartType, setChartType, chartData,fetchData}) {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  useEffect(()=>{fetchData();console.log(chartData.data)},[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<Routes>
+  <Route path='/' element={isDesktop?<Dashboard chartType={chartType} setChartType={setChartType} chartData={chartData}fetchData={fetchData}/>:<MobileDashboard chartType={chartType} setChartType={setChartType} chartData={chartData}fetchData={fetchData}/>}></Route>
+  <Route path='/Edit' element={<EditPage/>}></Route>
+</Routes>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  chartType: state.chartType,
+  chartData: state.chartData
+});
+
+const mapDispatchToProps = {
+  setChartType,
+  setChartData,
+  fetchData
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

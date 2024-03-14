@@ -1,0 +1,35 @@
+// EmployeeAgeChart.scss
+
+// Styles for the container div
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    }
+  
+  // Styles for each chart component
+  .chart {
+    width: 40%; // Adjust as needed
+    margin: 10px;
+    border: black;
+    border-style:solid;
+  }
+
+  .chart-bottom{
+    padding: 10px;
+    width: 80%;
+    height: 30%;
+    border: black;
+    border-style:solid;
+  }
+  
+  // Media query for responsiveness
+  @media screen and (max-width: 768px) {
+    .chart {
+      width: 100%; // Make the chart full width on smaller screens
+    }
+    .chart.bottom{
+      width: 100%;
+    }
+  }
+  
